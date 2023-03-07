@@ -1,7 +1,8 @@
 """Fichier pricipal du programme"""
 
+# Function qui va recuperer les donnees des joueurs
 def get_user_data():
-    # Creer les joueurs via une boucle
+    # Creation des joueurs via une boucle for et la method range()
     create_players=str(input("voulez vous créer des joueurs (O/N)? "))
     nb_players = 1
     players_list=[]

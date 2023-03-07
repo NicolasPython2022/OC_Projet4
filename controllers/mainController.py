@@ -1,7 +1,9 @@
 '''
-Tous le projet a est un ensemble de module,
+Tous le projet est un ensemble de module,
 chaque dossier est un module de fichier.py et chaque fichier .py est un package.
-On a implenter en ligne de commande, la commande "export PYTHONPATH=$PYTHONPATH:/Users/dwwm/OC_Projet4/"
+Ici j'ai implenter en ligne de commande, la commande "export PYTHONPATH=$PYTHONPATH:/Users/dwwm/OC_Projet4/"
+, qui me permet d'acceder a chaque chemin de module et de leurs fichiers.
+
 '''
 from models import player
 from models import tournoi
@@ -16,7 +18,7 @@ def control_user_data():
     # print(dict_tournoi)
 
 
-    # Ici on instancie les objets de la class Player chaque player est representer par un dictionnaire
+    # Ici on instancie les objets de la class Player chaque player est representer par un dictionnaire.
     players = []
 
     # Boucle qui instancie chaque player avec un objet
@@ -45,7 +47,7 @@ def control_user_data():
     rounds = []
     nombres_tours = 4
 
-    # Instanciation de la class Tournoi, en respectant l'ordre des attributs
+    # Instanciation de la class Tournoi, en respectant l'ordre des attributs cette fois-ci
     objet_tournoi = tournoi.Tournoi(name,
                                     place, 
                                     date,
