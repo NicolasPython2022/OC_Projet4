@@ -1,3 +1,5 @@
+
+
 class ViewPlayer:
     def get_player_data(self):
         create_players=str(input("voulez vous créer des joueurs (O/N)? "))
@@ -32,12 +34,14 @@ class ViewTournoi:
             print("Creation du Tournoi")
             name = str(input("Entrer un nom de Tournoi : "))
             place = str(input("Entrer le lieu du Tournoi : "))
-            date = str(input("Entrer la date du Tournoi : "))
+            date_debut = str(input("Entrer la date de debut du Tournoi : "))
+            date_fin = str(input("Entrer la date de fin du tournoi : "))
             director_remark = str(input("Remarques du directeur du Tournoi : "))
 
             dict_tournoi=      {"name": name,
                                 "place": place,
-                                "date": date,
+                                "date_debut": date_debut,
+                                "date_fin": date_fin,
                                 "director_remark": director_remark
                                 }
         
