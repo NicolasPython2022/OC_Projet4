@@ -38,42 +38,47 @@ class Controller:
 
     def get_tournoi(self):
 
-            # Ce qui est retourner par la view est stocke dans un dictionnaire "dict_tournoi"
+            # Ce qui est retourner par la view est stocker dans un dictionnaire "dict_tournoi"
             dict_tournoi = self.view_tournoi.get_data_tournoi()
 
             players = self.players
 
+            # Si le programme n'applique pas la condition, alors je retourne une valeur "None" afin de ne pas faire crasher le programme
             objet_tournoi = None
 
             if dict_tournoi != {}:
-                # Ici je recuperes les valeurs du dictionnaire peut importe l'ordre d'ecriture
+                # Ici je recupere les valeurs du dictionnaire peut importe l'ordre d'ecriture
                 name_tournoi = dict_tournoi['name']
                 place = dict_tournoi['place']
-                date = dict_tournoi['date']
+                start_date = dict_tournoi['date_debut']
+                end_date = dict_tournoi['date_fin']
                 director_remark = dict_tournoi['director_remark']
-                nombres_tours = 4
+                n_rounds = 4
                 rounds = []
-                for i in range(nombres_tours):
+                # Boucle for des attribiuts de la class Round avec la method range() parametrer des nbs de tours
+                for i in range(n_rounds):
                      name = "Round " + str(i+1)
                      matchs = []
                      date_debut = "23/04/23"
                      heure_debut = "14h00"
                      date_fin = "30/04/23"
                      heure_fin = "17h00"
-
+                     # Creation de l'objet "tour"
                      tour = round.Round(name,matchs,date_debut,heure_debut,date_fin,heure_fin)
+                     # Ajout a ma liste rounds[] des valeurs de mon objet creer
                      rounds.append(tour)
                 
 
 
                 # Instanciation de la class Tournoi, en respectant l'ordre des attributs cette fois-ci
                 objet_tournoi = tournoi.Tournoi(name_tournoi,
-                                                place, 
-                                                date,
+                                                place,
+                                                start_date,
+                                                end_date,
                                                 players,
                                                 rounds,
-                                                nombres_tours,
+                                                n_rounds,
                                                 director_remark)
                 
-                
+            # Retourne les valeurs de mon objet    
             return objet_tournoi
