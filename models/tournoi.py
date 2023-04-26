@@ -7,19 +7,21 @@ class Tournoi:
     def __init__(self,
                  name,
                  place, 
-                 date,
+                 start_date,
+                 end_date,
                  players,
                  rounds,
-                 nombres_tours,
+                 n_rounds,
                  director_remark):
         
         """Initialisation des attributs d'instance."""
         self.name = name
         self.place = place
-        self.date = date
-        self.joueurs = players
+        self.start_date = start_date
+        self.end_date = end_date
+        self.players = players
         self.rounds = rounds
-        self.nombres_tours = nombres_tours
+        self.n_rounds = n_rounds
         self.director_remark = director_remark
 
     """Method qui permet de returner les valeurs d'infos souhaitees."""
@@ -27,8 +29,9 @@ class Tournoi:
         return f"""Infos Tournoi : \n\t
                         Name:                  {self.name} \n\t
                         Place:                 {self.place}\n\t
-                        Date:                  {self.date}\n\t
-                        Joueurs:               {self.joueurs}\n\t
-                        Rounds:                {self.rounds}\n\t
-                        Nombre de tours:       {self.nombres_tours}
+                        Date de debut:         {self.start_date}\n\t
+                        Date de fin:           {self.end_date}\n\t
+                        Joueurs:               {self.players}\n\t
+                        Tours:                 {self.rounds}\n\t
+                        Nombre de tours:       {self.n_rounds}
                         Director remark:       {self.director_remark}"""
