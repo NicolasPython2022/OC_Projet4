@@ -37,52 +37,65 @@ if tournement != None:
     for round in tournement.rounds:
         print(round.name)
 
-#print(tournement.__dict__)
-
-
+#print (tournement.__dict__)
 
 # Premier Round
 name = "Round 1"
+# Liste de mes matchs
 matchs = []
-# Boucle for sur la longueur de ma liste de joueur en y ajoutant -1 afin de stopper l'iteration arriver 7 car le nombre 8 n'est pas comptabiliser
+# un dictionnaire qui comprends des keys de joueurs et des values qui sont les joueurs avec qui le joueur a deja joueurs
+last_visited_players = {}
+# boucle for pour construire
+for player in last_visited_players:
+    last_visited_players[player] = []
+    
+# Boucle sur la longueur de ma liste de joueur en y ajoutant -1 afin de stopper l'iteration a 7 car le nombre 8 est "Exclut"
 for i in range(len(players)-1):
-    # Ici je choisi le joueur qui jouera le match en appellant son indice
     player1 = players[i]
     player2 = players[i+1]
     # Je donne une valeur a mon score
-    score1 = 5
-    score2 = 3
+    print('Resultats du match',i+1)
+    score1 = int(input(f'score du joueur {player1.first_name}:' ))
+    score2 = int(input(f'score du joueur {player2.first_name}:'))
+    
     # La var match1 est un tuple de deux liste contenant 2 valeurs, un joueur et un score
-    match1 = ([player1,score1],[player2,score2])
-    # J'instancie ma class Match en lui passant en attribut mon tuple de liste
-    objet_match = match.Match(match1)
-    # J'ajoute a ma liste l'instanciation de mon objet
+    match_ = ([player1,score1],[player2,score2])
+    # Creation de l'objet_match en instanciant ma class Match qui est parametrer de mon tuple des deux listes
+    objet_match = match.Match(match_)
+    objet_match.add_points()
+
+    # J'ajoute a ma liste de matchs[] mon objet_match et donc ses valeurs
     matchs.append(objet_match)
     print(objet_match)
+    print('------------------------------')
 
 
 classement_players = []
 points_list = []
-# Boucle de mes joueurs qui classifi la list des points avec la methgod sorted()
+# Boucle de mes joueurs qui classifie la list des points avec la method sorted()
 for player in players:
     nb_points = player.points
     points_list.append(nb_points)
-points_list=sorted(points_list)
+#print(points_list)
+
+points_list=sorted(points_list,reverse=True)
+#print(points_list)
+
 list_players=players
-# Bouckle qui classifi la list des joueurs selon leurs nb de points
+# Boucle qui classifie la list des joueurs selon leurs nb de points
 for i in range(len(points_list)):
     for player in list_players: 
-        # condition sur le points si le nb de points du joueurs est egal au nb de points extraits de la liste de points classer
+        # condition sur le points si le nb de points du joueurs est egal aux nbs de points extraits de la liste de points classer
         if player.points==points_list[i]:
             classement_players.append(player)
             player.classement=i+1
             list_players.remove(player)
             break
-# Juste pour afficher le classement
+# Boucle  pour afficher le classement
 for player in classement_players:
     print(player)
-            
-    
+
+  
 
 
 
