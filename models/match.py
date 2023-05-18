@@ -1,4 +1,4 @@
-import random
+
 
 """Match des players."""
 
@@ -10,10 +10,7 @@ class Match:
         """Un match unique doit être stocké sous la forme d'un tuple contenant deux listes, chacune contenant deux éléments : une référence à une instance de joueur et un score. Les matchs multiples doivent être stockés sous forme de liste sur l'instance du tour."""
         
         self.match = match
-        self.color_player1 = ""
-        self.color_player2 = ""
-    
-
+        
     # Methode attribuant les points selon le gagnant
     def add_points(self):
        player1 = self.match[0][0]
@@ -29,14 +26,9 @@ class Match:
        else :
             player1.points += 0.5
             player2.points += 0.5
+    
 
-
-    # Methode de selection des couleurs des joueurs
-    def choice_color(self):
-       if random.choice([True,False]):
-            self.color_player1 = "White"
-            self.color_player2 = "Black"
-        
+    
     
     def __str__(self):
         player1 = self.match[0][0]

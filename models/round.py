@@ -7,11 +7,11 @@ class Round:
     Chaque tour est une liste de match.
     Chaque match consiste en une paire de joueurs avec un champ de resultats pr chaque joueurs."""
 
-    def __init__(self, name, players_matchs, date_debut, heure_debut, date_fin, heure_fin):
+    def __init__(self, name, matchs, date_debut, heure_debut, date_fin, heure_fin):
         """Initialise le constructeur."""
 
         self.name = name
-        self.players_matchs = players_matchs
+        self.matchs = matchs
         self.date_debut = date_debut
         self.date_fin = date_fin
         self.heure_debut = heure_debut
@@ -20,6 +20,15 @@ class Round:
     def display_result(self):
         for match in self.matchs:
             print(match)
+
+
+    # Method qui affiche la fin des matchs et qui demande le resultat de chaque match joue
+    def close_match(self):
+        self.end_date = get_timestamp()
+        print(f"Le round {self.name} c'est termine a : {self.end_date}")
+        print("Veuillez rentrer les resultats des matchs effectues.")
+        for match in self.matchs:
+            match.start_match()
 
 
 
