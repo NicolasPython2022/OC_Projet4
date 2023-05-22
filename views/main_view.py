@@ -1,12 +1,12 @@
 from rich.console import Console
 from rich.table import Table
-import os
-import json
+
 
 
 class View:
 
     def get_menu(self):
+        print("--------------------------------------")
         print('''
         Que souhaitez vous faire ?\n 
         1 - Creation d'un tournoi \n
@@ -17,22 +17,129 @@ class View:
         ''')
 
         display_menu = str(input("Entrer votre choix : "))
-        if display_menu == "1":
-            new_data_tournement = {}
-            data_tournement = self.get_data_tournoi()
-            dict_players = self.get_player_data()
-            data_tournement['players'] = dict_players
-            new_data_tournement['1'] = data_tournement
-            if os.path.exists('data.json'):
-                with open('data.json', 'r') as f:
-                    history_tournement = json.load(f)
-                last_tournement_key = int(list(history_tournement.keys())[-1])
-                history_tournement[str(
-                    last_tournement_key+1)] = data_tournement
-                new_data_tournement = history_tournement
+        return display_menu
+    
+    def stop_and_start(self):
+        choise_user = input("Voulez-vous continuer ou arreter le tournoi en cours ?\n 'O' pour continuer et 'N' pour arreter")
+        return choise_user
+    
+    def play_tournement(self, tournement_register):
+        print("--------------------------------------")
+        print("Quel tournoi souhaitez-vous commencer ? ")
+        for key in tournement_register.keys():
+            print(f"{key} - {tournement_register[key]}['name']")
+        
+        choise_tournement = input("Choisir un tournoi : ")
+        return choise_tournement
+    
+    def resume_game(self,data_tournement):
+        print("--------------------------------------")
+        data = True
+        print("Quel tournoi souhaitez-vous reprendre ? ")
+        for key in data_tournement.keys():
+            n_rounds = data_tournement[key]["numbers_rounds"]
+            if data_tournement[key]["last_played_round"] < n_rounds -1:
+                print(f"{key} - {data_tournement[key]['name']}")
+                data = False
 
-            with open('data.json', 'w') as f:
-                json.dump(new_data_tournement, f)
+        if data:
+            print("Il n'y a pas de tournoi a reprendre pour le moment.")
+            choise_tournement = None
+        else:
+            choise_tournement =str(input("Choisir un tournoi a reprendre : "))
+            return choise_tournement
+        print("--------------------------------------")
+
+
+    def get_player_data(self):
+        nb_players = 4
+        players_dict = {}
+
+        for player in range(nb_players):
+            print(f'---------------Creation du joueur {player+1}-----------------------')
+            last_name = str(input("Nom : "))
+            first_name = str(input("Prenom : "))
+            date_of_birth = str(input("Date de naissance : "))
+            sexe = str(input("Homme ou Femme ? "))
+
+            dict_player = {'last_name' : last_name,
+                           'first_name' : first_name,
+                           'date_of_birth' : date_of_birth,
+                           'sexe' : sexe,
+                           'points' : 0,
+                           'classement' : player+1,
+                           'last_players_meet' : []
+                           }     
+            '''
+            player_dict est le dictionnaire general qui comprend un dictionnaire representant chaque joueur.
+            '''
+            #players_dict.append(dict_player)
+            players_dict[str(player+1)] = dict_player
+
+        return players_dict
+
+
+    def get_data_tournoi():
+        '''Mehode de creation d'un tournoi.'''
+        dict_tournoi = {}
+
+        print("---------------Creation du Tournoi-----------------------")
+        name = str(input('Nom du tournoi : '))
+        place = str(input('Lieu du tournoi : '))
+        start_date = str(input('Date de debut :'))
+        end_date = str(input('Date de fin : '))
+        director_remark = str(input('Remarques du Directeur : '))
+
+        dict_tournoi = {'name' : name,
+                        'place': place,
+                        'start_date' : start_date,
+                        'end_date' : end_date,
+                        'directeur': director_remark
+                        }
+        
+        return dict_tournoi
+
+
+    def assign_score(self, player1, player2):
+        score1 = int(input(f"Entree score du joueur {player1.last_name} {player1.first_name} : "))
+        score2 = int(input(f"Entree score du joueur {player2.last_name} {player2.first_name} : "))
+        return score1,score2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if display_menu == "1":
+            
 
         elif display_menu == "2":
             with open('data.json', 'r') as f:
@@ -100,55 +207,11 @@ class View:
         else:
             print("Veuillez taper un chiffre entre 1 et 4, merci.")
 
-    def get_player_data(self):
+    
 
-        nb_players = 4
-        players_dict = {}
+    
 
-        for i in range(nb_players):
-            print('----------------------------------------------------')
-            print(f'Creation du joueur {i+1}')
-            last_name = str(input('Entrer votre nom : '))
-            first_name = str(input('Entrer maintenant votre prenom : '))
-            date_of_birth = str(input('Entrer votre date de naissance :'))
-            sexe = str(input('Vous etes un Homme ou une Femme ? '))
-
-            dict_player = {"last_name": last_name,
-                           "first_name": first_name,
-                           "date_of_birth": date_of_birth,
-                           "sexe": sexe,
-                           "classement": i+1,
-                           "points": 0}
-            # players_dict est le dictionnaire general qui comprend un dictionnaire representant chaque joueur.
-            players_dict[str(i+1)] = dict_player
-
-        return players_dict
-
-    def get_data_tournoi(self):
-        # Creation du tournoi
-        dict_tournoi = {}
-        print("---------------------------------------------------------")
-        print("Creation du Tournoi")
-        name = str(input("Entrer un nom de Tournoi : "))
-        place = str(input("Entrer le lieu du Tournoi : "))
-        date_debut = str(input("Entrer la date de debut du Tournoi : "))
-        date_fin = str(input("Entrer la date de fin du tournoi : "))
-        director_remark = str(input("Remarques du directeur du Tournoi : "))
-
-        dict_tournoi = {"name": name,
-                        "place": place,
-                        "date_debut": date_debut,
-                        "date_fin": date_fin,
-                        "director_remark": director_remark
-                        }
-
-        return dict_tournoi
-
-    def create_score(self, player1, player2):
-        score1 = int(input(f'score du joueur {player1.first_name}:'))
-        score2 = int(input(f'score du joueur {player2.first_name}:'))
-
-        return score1, score2
+    
 
     def display_result(self, tournement):
         table_tournement = Table(title="Infos du tournoi")
