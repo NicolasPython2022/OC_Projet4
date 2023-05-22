@@ -16,20 +16,7 @@ class Round:
         self.date_fin = date_fin
         self.heure_debut = heure_debut
         self.heure_fin = heure_fin
-    
+
     def display_result(self):
         for match in self.matchs:
             print(match)
-
-
-    # Method qui affiche la fin des matchs et qui demande le resultat de chaque match joue
-    def close_match(self):
-        self.end_date = get_timestamp()
-        print(f"Le round {self.name} c'est termine a : {self.end_date}")
-        print("Veuillez rentrer les resultats des matchs effectues.")
-        for match in self.matchs:
-            match.start_match()
-
-
-
-            

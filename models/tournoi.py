@@ -35,5 +35,5 @@ class Tournoi:
                         Date de fin:           {self.end_date}\n\t
                         Joueurs:               {self.players}\n\t
                         Tours:                 {self.rounds}\n\t
-                        Nombre de tours:       {self.n_rounds}
+                        Nombre de tours:       {self.n_rounds}\n\t
                         Director remark:       {self.director_remark}"""

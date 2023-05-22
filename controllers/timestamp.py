@@ -5,7 +5,10 @@ from datetime import datetime
 # Mehode d'obtention de l'horodatage
 def get_timestamp():
     # now()methode qui donne la date et le temps actuels
-    return datetime.now().strftime("%d/%m/%Y-%H:%M:%S")
+    date_complet = datetime.now()
+    date = date_complet.strftime("%d/%m/%Y")
+    heure = date_complet.strftime("%H:%M")
+    return date, heure
 
 
 '''
