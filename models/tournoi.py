@@ -25,15 +25,15 @@ class Tournoi:
         self.n_rounds = n_rounds
         self.director_remark = director_remark
 
-    """Method qui permet de returner les valeurs d'infos souhaitees."""
+    """Methode qui permet de returner les valeurs d'infos souhaitees."""
 
     def __str__(self):
         return f"""Infos Tournoi : \n\t
-                        Name:                  {self.name} \n\t
-                        Place:                 {self.place}\n\t
-                        Date de debut:         {self.start_date}\n\t
-                        Date de fin:           {self.end_date}\n\t
-                        Joueurs:               {self.players}\n\t
-                        Tours:                 {self.rounds}\n\t
-                        Nombre de tours:       {self.n_rounds}\n\t
-                        Director remark:       {self.director_remark}"""
+                        Name :                  {self.name} \n\t
+                        Place :                 {self.place}\n\t
+                        Date de debut :         {self.start_date}\n\t
+                        Date de fin :           {self.end_date}\n\t
+                        Joueurs :               {self.players}\n\t
+                        Tours :                 {self.rounds}\n\t
+                        Nombre de tours :       {self.n_rounds}\n\t
+                        Director remark :       {self.director_remark}"""
