@@ -16,7 +16,3 @@ class Round:
         self.date_fin = date_fin
         self.heure_debut = heure_debut
         self.heure_fin = heure_fin
-
-    def display_result(self):
-        for match in self.matchs:
-            print(match)

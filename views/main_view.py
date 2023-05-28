@@ -147,13 +147,3 @@ class View:
 
         console = Console()
         console.print(table_player)
-
-        # for key in players.keys():
-        #     # player contient les infos du numero d'un joueur
-        #     player = players[key]
-        #     table_player.add_row(str(player.classement),
-        #                          player.last_name,
-        #                          player.first_name,
-        #                          str(player.date_of_birth),
-        #                          player.sexe,
-        #                          str(player.points))
