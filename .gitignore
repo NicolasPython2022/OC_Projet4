@@ -1,7 +1,13 @@
 __pycache__
 *.py[cod]
 *$py.class
-
+controllers/__pycache__/main_controller.cpython-311.pyc
+controllers/__pycache__/timestamp.cpython-311.pyc
+models/__pycache__/match.cpython-311.pyc
+models/__pycache__/player.cpython-311.pyc
+models/__pycache__/round.cpython-311.pyc
+models/__pycache__/tournoi.cpython-311.pyc
+views/__pycache__/main_view.cpython-311.pyc
 # Distribution / packaging 
 .Python build/ 
 develop-eggs/ 
