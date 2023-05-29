@@ -1,4 +1,4 @@
-__pycache__
+__pycache__.py
 *.py[cod]
 *$py.class
 controllers/__pycache__/main_controller.cpython-311.pyc
