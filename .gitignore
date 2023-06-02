@@ -11,7 +11,7 @@ models/__pycache__/player.cpython-311.pyc
 models/__pycache__/round.cpython-311.pyc
 models/__pycache__/tournoi.cpython-311.pyc
 views/__pycache__/main_view.cpython-311.pyc
-.vimrc
+
 .vscode
 # Environment
 .env
