@@ -1,9 +1,11 @@
 # OC_Projet4
 Organisation d'un tournoi d'echec sous python qui fonctionne hors ligne.
 
-1 - Installer un environnement virtuel via la ligne de commande : python3 -m venv .env
+1 - Installation d'un environnement virtuel via la ligne de commande : python3 -m .env
 
-2 - Organisation de l'arboresence avec les modules de fichier.py respectant ici le model MVC
+2 - Telecharchement des packets pip aux besoin et creation d'un fichier requirements.txt contenant tous les packets pip.
+
+3 - Organisation de l'arboresence avec les modules de fichier.py respectant ici le model MVC
 
 3 - Creation des class dans le module models
 
