@@ -1,9 +1,7 @@
-"""Tournoi d'echec."""
+"""Creation d'une class de Tournoi d'echec."""
 
 
 class Tournoi:
-    """Creation d'une class de Tournoi d'echec."""
-
     """Initialisation du constructor."""
 
     def __init__(self,
@@ -16,6 +14,7 @@ class Tournoi:
                  n_rounds,
                  director_remark):
         """Initialisation des attributs d'instance."""
+
         self.name = name
         self.place = place
         self.start_date = start_date
@@ -25,7 +24,7 @@ class Tournoi:
         self.n_rounds = n_rounds
         self.director_remark = director_remark
 
-    """Methode qui permet de returner les valeurs d'infos souhaitees."""
+    """Methode qui permet de retourner les valeurs d'infos souhaitees."""
 
     def __str__(self):
         return f"""Infos Tournoi : \n\t

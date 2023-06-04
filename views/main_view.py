@@ -6,7 +6,12 @@ from datetime import datetime
 class View:
     def display_menu(self):
         print("-----------------------------------")
-        print('''Que souhaitez vous faire ?\n\t1 - Creation d'un tournoi \n\t2 - Afficher les infos d'un tournoi \n\t3 - Commencer un tournoi \n\t4 - Reprendre un tournoi en cours \n\t5 - Quitter \n''')
+        print('''Que souhaitez vous faire ?\n\t
+        1 - Creation d'un tournoi \n\t
+        2 - Afficher les infos d'un tournoi \n\t
+        3 - Commencer un tournoi \n\t
+        4 - Reprendre un tournoi en cours \n\t
+        5 - Quitter \n''')
         display_menu = str(input("Entrer votre choix : "))
         print("-----------------------------------------")
         return display_menu
@@ -37,7 +42,8 @@ class View:
         print("Quel tournoi voulez-vous reprendre ?")
         for key in data_tournement.keys():
             n_rounds = data_tournement[key]["nombre_rounds"]
-            if data_tournement[key]["last_played_round"] < n_rounds-1 and data_tournement[key]["last_played_round"] >= 0:
+            if data_tournement[key]["last_played_round"] < n_rounds-1\
+                    and data_tournement[key]["last_played_round"] >= 0:
                 print(f"\t{key}- {data_tournement[key]['name']}")
                 k = False
         if k:
@@ -63,7 +69,10 @@ class View:
             except:
                 k = True
             while k:
-                print("Veuillez rentrer la date dans le bon format suivant : dd-mm-yyyy")
+                print(
+                    '''Veuillez rentrer la date dans le bon format suivant :
+                       dd-mm-yyyy .
+                    ''')
                 date_of_birth = input(
                     'Entrer votre date de naissance (dd-mm-yyyy) :')
                 try:
@@ -87,8 +96,11 @@ class View:
                            "classement": i+1,
                            "last_visited_players": [],
                            "points": 0}
-            # players_dict est le dictionnaire general qui comprend un dictionnaire representant chaque joueur.
+
+            '''players_dict est le dictionnaire general,
+            qui comprend un dictionnaire representant chaque joueur.'''
             players_dict[str(i+1)] = dict_player
+
         return players_dict
 
     def get_data_tournoi(self):
@@ -106,7 +118,9 @@ class View:
         except:
             k = True
         while k:
-            print("Veuillez rentrer la date dans le bon format suivant : dd-mm-yyyy")
+            print('''Veuillez rentrer la date dans le bon format suivant :
+            dd-mm-yyyy .
+            ''')
             date_debut = input(
                 "Entrer la date de debut du Tournoi (dd-mm-yyyy) : ")
             try:
@@ -123,7 +137,9 @@ class View:
         except:
             k = True
         while k:
-            print("Veuillez rentrer la date dans le bon format suivant : dd-mm-yyyy")
+            print('''Veuillez rentrer la date dans le bon format suivant :
+            dd-mm-yyyy .
+            ''')
             date_fin = input(
                 "Entrer la date de fin du Tournoi (dd-mm-yyyy) : ")
             try:
@@ -157,7 +173,9 @@ class View:
             is_error = True
         while is_error:
             print(
-                "les scores ne sont pas bons veuillez rentrer des nombres entiers positifs")
+                '''les scores ne sont pas bons,
+                veuillez rentrer des nombres entiers positifs.
+                ''')
             score1 = input(f'score du joueur {player1.first_name}:')
             score2 = input(f'score du joueur {player2.first_name}:')
             try:
@@ -176,7 +194,9 @@ class View:
         choised_tournement = str(input("Choisir un tournoi: "))
         while choised_tournement not in data_tournement.keys():
             print(
-                "La valeur entrée n'est pas valide, veuillez choisir un nombre parmi les nombres proposés")
+                '''La valeur entrée n'est pas valide,
+                veuillez choisir un nombre parmi les nombres proposés.
+                ''')
             choised_tournement = str(input("Choisir un tournoi: "))
         print("-------------------------------")
         data_tournement = data_tournement[choised_tournement]

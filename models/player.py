@@ -1,10 +1,16 @@
-"""Joueurs du tournoi."""
+"""Class joueur."""
 
 
 class Player:
-    """"Joueur."""
 
-    def __init__(self, last_name, first_name, date_of_birth, sexe, points=0, classement=None, last_visited_players=[]):
+    def __init__(self,
+                 last_name,
+                 first_name,
+                 date_of_birth,
+                 sexe, points=0,
+                 classement=None,
+                 last_visited_players=[]
+                 ):
         """Initialise le constructeur et les attributs de la class."""
 
         self.last_name = last_name

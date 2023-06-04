@@ -1,14 +1,21 @@
-from controllers.timestamp import get_timestamp
-from models.match import Match
+'''Class des rounds.'''
 
 
 class Round:
-    """Tour.
+    """
     Chaque tour est une liste de match.
-    Chaque match consiste en une paire de joueurs avec un champ de resultats pr chaque joueurs."""
+    Chaque match consiste en une paire de joueurs,
+    avec un champ de resultats pr chaque joueurs.
+    """
 
-    def __init__(self, name, matchs, date_debut, heure_debut, date_fin, heure_fin):
-        """Initialise le constructeur."""
+    def __init__(self,
+                 name,
+                 matchs,
+                 date_debut,
+                 heure_debut,
+                 date_fin,
+                 heure_fin):
+        """Initialisation du constructeur."""
 
         self.name = name
         self.matchs = matchs

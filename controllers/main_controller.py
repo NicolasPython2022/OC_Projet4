@@ -1,14 +1,8 @@
 from models import player
-from models import tournoi
-from models import round
-from models import match
 from views import main_view
 import random
 import json
 import os
-
-# Import du type de base pour la date et l'heure
-from datetime import datetime
 
 
 class Controller:
@@ -60,7 +54,6 @@ class Controller:
         return classement_players
 
     def play_match(self, player1, player2):
-        # J'appel les valeurs retourner de ma methode de la view en n'oubliant pas d'indiquer ses params.
         score1, score2 = self.view.create_score(player1, player2)
         # Condition d'attribution du point gagnant, du perdant et du match nul
         if score1 > score2:
@@ -74,7 +67,8 @@ class Controller:
         return player1, player2
 
     def play_round(self, players):
-        # Boucle sur la longueur de ma liste de joueur en y ajoutant -1 afin de stopper l'iteration a 7 car le nombre 8 est "Exclut"
+        '''Boucle sur la longueur de ma liste de joueur en y ajoutant -1
+           afin de stopper l'iteration a 7 car le nombre 8 est Exclut '''
         for i in range(len(players) - 1):
             player1 = players[i]
             for j in range(i + 1, len(players)):
@@ -86,7 +80,8 @@ class Controller:
                     print("Resultats du match", i + 1)
                     # Jouer un match
                     player1, player2 = self.play_match(player1, player2)
-                    # J'ajoute a ma liste de matchs[] mon objet_match et donc ses valeurs
+                    '''J'ajoute a ma liste de matchs[] mon objet_match et
+                       donc ses valeurs '''
                     player1.last_visited_players.append(
                         player2.last_name + " " + player2.first_name
                     )
@@ -98,7 +93,7 @@ class Controller:
         return players
 
     def save_players_results(self, classement_players):
-        # enregistrer les résultats des joueurs
+        # Enregistrer les résultats des joueurs dans un dictionnaire
         dict_players = {}
         for i in range(len(classement_players)):
             player_dict = {}
@@ -115,18 +110,19 @@ class Controller:
         return dict_players
 
     def start_tournement(self, dict_tournement):
-        # Ici je recupere les valeurs du dictionnaire peut importe l'ordre d'ecriture
+        # Je recupere les valeurs du dict peut importe l'ordre d'écriture
         last_played_round = dict_tournement["last_played_round"]
         n_rounds = dict_tournement["nombre_rounds"]
 
-        # Boucle for des attribiuts de la class Round avec la method range() parametrer des nbs de tours
+        '''Boucle for sur attribut de class Round,
+           avec range() parametrer des n_rounds '''
         for k in range(last_played_round + 1, n_rounds):
             players_dict = dict_tournement["players"]
 
-            # les infos de joueurs
+            # Infos de joueurs
             players = self.get_players_infos(players_dict)
 
-            # jouer un tour
+            # Jouer un tour
             if k == 0:
                 random.shuffle(players)
             name = "Round " + str(k + 1)
@@ -134,7 +130,7 @@ class Controller:
             #
             players = self.play_round(players)
 
-            # classer les joueurs selon leurs classements
+            # Classer les joueurs selon leurs classements
             classement_players = self.update_players_classement(players)
 
             # enregistrer les résultats des joueurs
@@ -149,7 +145,7 @@ class Controller:
         return dict_tournement
 
     def create_tournement(self):
-        # créer un touroi dans le fichier json
+        # Créer un touroi dans le fichier json
         new_data_tournement = {}
         data_tournement = self.view.get_data_tournoi()
         nb_players = data_tournement["nombre_players"]
